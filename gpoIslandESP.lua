@@ -1,4 +1,3 @@
--- LeadMarker#1219
 local islands = getrenv()._G.IslandCFrames
 local lplr = game.Players.LocalPlayer
 local cam = workspace.CurrentCamera
