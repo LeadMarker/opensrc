@@ -1,8 +1,6 @@
 -- Credits to https://github.com/Blissful4992 for helping me understand how the boxes work
 
 local client = game.Players.LocalPlayer
-local chr = client.Character or client.CharacterAdded:Wait()
-local root = chr:WaitForChild('HumanoidRootPart')
 local camera = workspace.CurrentCamera
 local runservice = game:GetService('RunService')
 
