@@ -5,7 +5,7 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/StepBroFurious/Script
 local old; old = hookmetamethod(game, '__namecall', function(self, ...)
     local method, args = getnamecallmethod(), {...}
     
-    if method == 'FireServer' and self.Name == 'SayMessageRequest' and args[1] and getgenv().furry_talk then 
+    if method == 'FireServer' and self.Name == 'SayMessageRequest' and args[1] and furry_talk then 
         local msg = args[1] 
         args[1] = encode(msg)
         
