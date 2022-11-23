@@ -5,6 +5,44 @@ local client = game.Players.LocalPlayer
 local chr = client.Character
 local root = chr.HumanoidRootPart
 getgenv().flags = {}
+local gc = getgc()
+
+local keys = {
+    join_coin = '',
+    farm_coin = '', 
+    farm_coin2 = '',
+    collect_coin = ''
+}
+
+-- stole this from topit
+local isexecclosure = is_synapse_function or 
+    is_exec_closure or 
+    is_exec_func or 
+    is_exec_function or 
+    is_executor_closure or 
+    is_executor_func or 
+    is_executor_function or
+    is_our_closure or 
+    is_our_func or
+    is_our_function or 
+    is_synapse_closure or 
+    is_synapse_func or 
+    is_synapse_function or 
+    iselectronfunction or 
+    isexecclosure or 
+    isexecfunc or 
+    isexecfunction or 
+    isexecutorclosure or
+    isexecutorfunc or 
+    isexecutorfunction or
+    isfluxusfunction or 
+    iskrnlclosure or
+    iskrnlfunction or
+    isourclosure or 
+    isourfunc or
+    isourfunction or
+    isoxygenfunction
+--- 
 
 local library = require(game:GetService("ReplicatedStorage").Framework.Library)
 local network = library.Network
@@ -16,6 +54,22 @@ local e_pets = {} do
     for i,v in pairs(pets) do 
         if rawget(v, 'e') then 
             table.insert(e_pets, v.uid)
+        end
+    end
+end
+
+-- // Key Grabber \\ -- 
+for i,v in next, gc do 
+    if type(v) == 'function' and islclosure(v) and not isexecclosure(v) then 
+        local constants = getconstants(v)
+        
+        if getinfo(v).name == 'NetworkUpdate' and table.find(constants, 'Network') and table.find(constants, 'Fire') then 
+            keys.farm_coin = getconstant(v, 14)
+        elseif table.find(constants, 'Network') and table.find(constants, 'rbxassetid://7004964432') then 
+            keys.join_coin = getconstant(v, 28)
+            keys.farm_coin2 = getconstant(getproto(v, 5), 7)
+        elseif getinfo(v).name == 'Collect' and table.find(constants, 'QueueOrbSound') then 
+            keys.collect_coin = getconstant(getproto(v, 1), 3)
         end
     end
 end
@@ -41,7 +95,7 @@ end
 local function collect_coins()
     if #game:GetService("Workspace")["__THINGS"].Orbs:GetChildren() > 0 then 
         for i,v in next, game:GetService("Workspace")["__THINGS"].Orbs:GetChildren() do 
-            network.Fire('.3', {v.Name})
+            network.Fire(keys.collect_coin, {v.Name})
         end
     end
 end
@@ -63,10 +117,10 @@ local function get_coin_radius()
 end
 
 local function break_coin(coin, pets)
-    network.Invoke('5', coin:GetAttribute("ID"), pets)
+    network.Invoke(keys.join_coin, coin:GetAttribute("ID"), pets)
     for i,v in next, pets do 
-        network.Fire('1', v, 'Coin', coin:GetAttribute("ID"))
-        network.Fire('7', coin:GetAttribute("ID"), v)
+        network.Fire(keys.farm_coin, v, 'Coin', coin:GetAttribute("ID"))
+        network.Fire(keys.farm_coin2, coin:GetAttribute("ID"), v)
         task.wait()
     end
 end
