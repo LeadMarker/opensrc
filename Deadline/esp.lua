@@ -1,7 +1,7 @@
 -- // Vars \\ -- 
 local client = game:GetService('Players').LocalPlayer
 local characters = game:GetService('Workspace').characters
-local random_player = tostring(game:GetService('Workspace').characters:GetChildren()[1])
+local random_player = game:GetService('Workspace').characters:GetChildren()[1].Name
 local camera = game:GetService('Workspace').CurrentCamera
 
 -- // Character Stuff \\ -- 
