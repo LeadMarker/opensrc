@@ -1,7 +1,7 @@
 --[[
     -- Hit Types: Basic, Special, Unique, Ultimate
     getgenv().hit_type = 'Ultimate'
-    loadstring(game:HttpGet('https://github.com/LeadMarker/opensrc/blob/main/EncountersFighting.lua'))()
+    loadstring(game:HttpGet('https://raw.githubusercontent.com/LeadMarker/opensrc/main/EncountersFighting.lua'))()
 ]]
 
 -- // Services \\ -- 
