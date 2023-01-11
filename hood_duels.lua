@@ -33,7 +33,7 @@ local draw_obj, get_mouse, get_closest_player; do
         local dist = settings.fov_radius
         local player = nil
         
-        for i,v in pairs(game.Players:GetPlayers()) do
+        for i,v in pairs(players:GetPlayers()) do
             if (i ~= 1 and v.Character and v.Character:FindFirstChild('HumanoidRootPart')) then
                 local pos, onscreen = camera:WorldToViewportPoint(v.Character:FindFirstChild('HumanoidRootPart').Position)
                 
