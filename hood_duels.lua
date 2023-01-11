@@ -35,7 +35,7 @@ local draw_obj, get_mouse, get_closest_player; do
         
         for i,v in pairs(game.Players:GetPlayers()) do
             if (i ~= 1 and v.Character and v.Character:FindFirstChild('HumanoidRootPart')) then
-                local pos, onscreen = workspace.CurrentCamera:WorldToViewportPoint(v.Character:FindFirstChild('HumanoidRootPart').Position)
+                local pos, onscreen = camera:WorldToViewportPoint(v.Character:FindFirstChild('HumanoidRootPart').Position)
                 
                 local mag = (Vector2.new(pos.x, pos.y) - get_mouse()).magnitude 
                 
