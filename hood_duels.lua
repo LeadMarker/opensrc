@@ -33,9 +33,9 @@ local draw_obj, get_mouse, get_closest_player; do
         local dist = settings.fov_radius
         local player = nil
         
-        for i,v in pairs(players:GetPlayers()) do
+        for i,v in pairs(game:GetService('Players'):GetPlayers()) do
             if (i ~= 1 and v.Character and v.Character:FindFirstChild('HumanoidRootPart')) then
-                local pos, onscreen = camera:WorldToViewportPoint(v.Character:FindFirstChild('HumanoidRootPart').Position)
+                local pos, onscreen = workspace.CurrentCamera:WorldToViewportPoint(v.Character:FindFirstChild('HumanoidRootPart').Position)
                 
                 local mag = (Vector2.new(pos.x, pos.y) - get_mouse()).magnitude 
                 
