@@ -106,11 +106,11 @@ do
 
             for i = 1, 4 do 
                 esp_lib.cache.box[player][i]:Remove()
-                esp_lib.cache.box[player][i] = nil
             end
 
             esp_lib.cache.text[player] = nil
             esp_lib.cache.line[player] = nil
+            esp_lib.cache.box[player] = nil
         end
     end)
 
