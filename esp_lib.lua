@@ -32,7 +32,7 @@ end
 
 local esp_lib = {
     color = Color3.fromRGB(255, 255, 255),
-    toggle = true,
+    toggle = false,
     tracers = 'fixed',
     mag = false,
     health = false,
