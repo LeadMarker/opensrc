@@ -6,11 +6,13 @@ local workspace = game:GetService('Workspace')
 local players = game:GetService('Players')
 local userinputservice = game:GetService('UserInputService')
 local runservice = game:GetService('RunService')
+local httpservice = game:GetService('HttpService')
 local stats = game:GetService('Stats')
 
 -- // Variables \\ -- 
 local client = players.LocalPlayer
 local camera = workspace.CurrentCamera
+local req = syn and syn.request or http and http.request or http_request or fluxus and fluxus.request or getgenv().request or request
 
 -- // Functions \\ -- 
 local draw, get_char, get_root, get_hum, is_alive; do
@@ -50,7 +52,7 @@ local draw, get_char, get_root, get_hum, is_alive; do
     end
 end
 
-local window = library:New({Name = 'kronos - Dahood | Made by LeadMarker#1219 | discord.gg/84TTgAyF', Accent = Color3.fromRGB(3, 252, 190)})
+local window = library:New({Name = 'kronos - Dahood | Made by LeadMarker#1219 | discord.gg/8Cj5abGrNv', Accent = Color3.fromRGB(3, 252, 190)})
 do
     local main = window:Page({Name = 'Main'}) 
     do 
@@ -135,10 +137,6 @@ do
 
                     return player
                 end
-
-                grab_ping = function()
-                    return (pointers['ping_comp'].current and stats.Network.ServerStatsItem['Data Ping']:GetValue() / 1000) or (not pointers['ping_comp'].current and 0)
-                end
             end
 
             local fov_circle = draw('Circle', {
@@ -173,9 +171,9 @@ do
                             if (char and root and humanoid) then 
                                 local sens = pointers['cam_smoothing'].current / 10
                                 if (pointers['prediction'].current and pointers['pred_type'].current == 'Velocity') then 
-                                    camera.CFrame = camera.CFrame:Lerp(CFrame.new(camera.CFrame.Position, root.Position + (root.Velocity * (pointers['pred_rate'].current + grab_ping()))), sens)
+                                    camera.CFrame = camera.CFrame:Lerp(CFrame.new(camera.CFrame.Position, root.Position + (root.Velocity * pointers['pred_rate'].current)), sens)
                                 elseif (pointers['prediction'].current and pointers['pred_type'].current == 'MoveDirection') then 
-                                    camera.CFrame = camera.CFrame:Lerp(CFrame.new(camera.CFrame.Position, root.Position + (humanoid.MoveDirection * (pointers['pred_rate'].current + (grab_ping() + 1.3)))), sens)
+                                    camera.CFrame = camera.CFrame:Lerp(CFrame.new(camera.CFrame.Position, root.Position + (humanoid.MoveDirection * (pointers['pred_rate'].current + 1.5))), sens)
                                 else
                                     camera.CFrame = camera.CFrame:Lerp(CFrame.new(camera.CFrame.Position, root.Position), sens)
                                 end
@@ -198,9 +196,9 @@ do
 
                         if (char and root and humanoid) then 
                             if (pointers['prediction'].current and pointers['pred_type'].current == 'Velocity') then 
-                                return root.CFrame + (root.Velocity * (pointers['pred_rate'].current + grab_ping()))
+                                return root.CFrame + (root.Velocity * pointers['pred_rate'].current)
                             elseif (pointers['prediction'].current and pointers['pred_type'].current == 'MoveDirection') then 
-                                return root.CFrame + (humanoid.MoveDirection * (pointers['pred_rate'].current + (grab_ping() + 1.3)))
+                                return root.CFrame + (humanoid.MoveDirection * (pointers['pred_rate'].current + 1.5))
                             else
                                 return root.CFrame
                             end
@@ -435,6 +433,27 @@ do
                     task.wait()
                 end
             end)
+        end
+
+        local credit_main = main:Section({Name = 'Credit', Side = 'Right'})
+        do 
+            credit_main:Label({Name = 'Scripter: LeadMarker#1219', Middle = true})
+            credit_main:Button({Name = 'Join Discord', Callback = function()
+                setclipboard("discord.gg/8Cj5abGrNv")
+                req({
+                    Url = 'http://127.0.0.1:6463/rpc?v=1',
+                    Method = 'POST',
+                    Headers = {
+                        ['Content-Type'] = 'application/json',
+                        Origin = 'https://discord.com'
+                    },
+                    Body = httpservice:JSONEncode({
+                        cmd = 'INVITE_BROWSER',
+                        nonce = httpservice:GenerateGUID(false),
+                        args = {code = '8Cj5abGrNv'}
+                    })
+                })
+            end})
         end
     end
 
