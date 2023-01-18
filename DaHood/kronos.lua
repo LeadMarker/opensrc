@@ -140,7 +140,7 @@ do
             end
 
             local fov_circle = draw('Circle', {
-                NumSides = 9e9,
+                NumSides = 1000,
                 Thickness = 1
             })
 
