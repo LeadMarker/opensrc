@@ -70,13 +70,13 @@ do
 
             aimbot_main:Toggle({Name = 'Wallcheck', Default = false, Pointer = 'wallcheck'})
             
-            aimbot_main:Slider({Name = 'Smoothing', Minimum = 0, Maximum = 10, Default = 0, Decimals = .1, Pointer = 'cam_smoothing'})
+            aimbot_main:Slider({Name = 'Smoothing', Minimum = 0, Maximum = 10, Default = 10, Decimals = .1, Pointer = 'cam_smoothing'})
             
             aimbot_main:Label({Name = '-', Middle = true})
             
-            aimbot_main:Toggle({Name = 'Use Prediction', Default = false, Pointer = 'prediction'})
+            aimbot_main:Toggle({Name = 'Use Prediction', Default = true, Pointer = 'prediction'})
             aimbot_main:Dropdown({Name = 'Prediction Type', Options = {'Velocity', 'MoveDirection'}, Default = 'Prediction Type: None', Pointer = 'pred_type'})
-            aimbot_main:Slider({Name = 'Prediction Amount', Minimum = 0, Maximum = 2, Default = 1, Decimals = .05, Pointer = 'pred_rate'})
+            aimbot_main:Slider({Name = 'Prediction Amount', Minimum = 0, Maximum = 2, Default = .15, Decimals = .05, Pointer = 'pred_rate'})
             aimbot_main:Toggle({Name = 'Ping Compensate', Default = false, Pointer = 'ping_comp'})
             
             aimbot_main:Label({Name = '-', Middle = true})
@@ -84,7 +84,7 @@ do
             local fov_toggle = aimbot_main:Toggle({Name = 'Use FOV Circle', Default = false, Pointer = 'fov_circle'})
             fov_toggle:Colorpicker({Pointer = 'fov_color', Default = Color3.fromRGB(255, 255, 255)})
             
-            aimbot_main:Slider({Name = 'Fov Radius', Minimum = 30, Maximum = 250, Default = 30, Decimals = 1, Pointer = 'fov_radius'})
+            aimbot_main:Slider({Name = 'Fov Radius', Minimum = 30, Maximum = 250, Default = 100, Decimals = 1, Pointer = 'fov_radius'})
 
             local is_visible, get_mouse, get_player_mouse, grab_ping; do 
                 is_visible = function(player)
