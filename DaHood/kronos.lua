@@ -77,7 +77,6 @@ do
             aimbot_main:Toggle({Name = 'Use Prediction', Default = true, Pointer = 'prediction'})
             aimbot_main:Dropdown({Name = 'Prediction Type', Options = {'Velocity', 'MoveDirection'}, Default = 'Prediction Type: None', Pointer = 'pred_type'})
             aimbot_main:Slider({Name = 'Prediction Amount', Minimum = 0, Maximum = 2, Default = .15, Decimals = .05, Pointer = 'pred_rate'})
-            aimbot_main:Toggle({Name = 'Ping Compensate', Default = false, Pointer = 'ping_comp'})
             
             aimbot_main:Label({Name = '-', Middle = true})
             
@@ -86,7 +85,7 @@ do
             
             aimbot_main:Slider({Name = 'Fov Radius', Minimum = 30, Maximum = 250, Default = 100, Decimals = 1, Pointer = 'fov_radius'})
 
-            local is_visible, get_mouse, get_player_mouse, grab_ping; do 
+            local is_visible, get_mouse, get_player_mouse; do 
                 is_visible = function(player)
                     local char = get_char(player)
                     local root = get_root(char)
