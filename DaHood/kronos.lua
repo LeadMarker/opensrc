@@ -12,7 +12,7 @@ local stats = game:GetService('Stats')
 -- // Variables \\ -- 
 local client = players.LocalPlayer
 local camera = workspace.CurrentCamera
-local req = syn and syn.request or http and http.request or http_request or fluxus and fluxus.request or getgenv().request or request
+local req = syn and syn.request or http and http.request or http_request or fluxus and fluxus.request or getgenv().request or request -- dsicord joiner from inf yield
 
 -- // Functions \\ -- 
 local draw, get_char, get_root, get_hum, is_alive; do
@@ -69,6 +69,8 @@ do
             end})
 
             aimbot_main:Toggle({Name = 'Wallcheck', Default = false, Pointer = 'wallcheck'})
+
+            aimbot_main:Toggle({Name = 'Trigger Bot', Default = false, Pointer = 'triggerbot'})
             
             aimbot_main:Slider({Name = 'Smoothing', Minimum = 0, Maximum = 10, Default = 10, Decimals = .1, Pointer = 'cam_smoothing'})
             
@@ -76,7 +78,7 @@ do
             
             aimbot_main:Toggle({Name = 'Use Prediction', Default = true, Pointer = 'prediction'})
             aimbot_main:Dropdown({Name = 'Prediction Type', Options = {'Velocity', 'MoveDirection'}, Default = 'Prediction Type: None', Pointer = 'pred_type'})
-            aimbot_main:Slider({Name = 'Prediction Amount', Minimum = 0, Maximum = 2, Default = .15, Decimals = .05, Pointer = 'pred_rate'})
+            aimbot_main:Slider({Name = 'Prediction Amount', Minimum = 0, Maximum = 4, Default = .15, Decimals = .05, Pointer = 'pred_rate'})
             
             aimbot_main:Label({Name = '-', Middle = true})
             
@@ -177,6 +179,14 @@ do
                                     camera.CFrame = camera.CFrame:Lerp(CFrame.new(camera.CFrame.Position, root.Position), sens)
                                 end
                             end
+                        end
+                    end
+
+                    if (pointers['triggerbot'].current) then 
+                        if (target ~= nil) then 
+                            mouse1click()
+
+                            task.wait(.1)
                         end
                     end
 
@@ -318,7 +328,7 @@ do
                         task.wait()
                     end
 
-                    for i,v in next, cache.text do
+                    for i,v in pairs(cache.text) do
                         v:Remove()
                     end
                 end)
