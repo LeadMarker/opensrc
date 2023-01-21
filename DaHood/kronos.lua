@@ -174,7 +174,7 @@ do
                                 if (pointers['prediction'].current and pointers['pred_type'].current == 'Velocity') then 
                                     camera.CFrame = camera.CFrame:Lerp(CFrame.new(camera.CFrame.Position, root.Position + (root.Velocity * pointers['pred_rate'].current)), sens)
                                 elseif (pointers['prediction'].current and pointers['pred_type'].current == 'MoveDirection') then 
-                                    camera.CFrame = camera.CFrame:Lerp(CFrame.new(camera.CFrame.Position, root.Position + (humanoid.MoveDirection * (pointers['pred_rate'].current + 1.5))), sens)
+                                    camera.CFrame = camera.CFrame:Lerp(CFrame.new(camera.CFrame.Position, root.Position + (humanoid.MoveDirection * (pointers['pred_rate'].current + 2))), sens)
                                 else
                                     camera.CFrame = camera.CFrame:Lerp(CFrame.new(camera.CFrame.Position, root.Position), sens)
                                 end
@@ -207,7 +207,7 @@ do
                             if (pointers['prediction'].current and pointers['pred_type'].current == 'Velocity') then 
                                 return root.CFrame + (root.Velocity * pointers['pred_rate'].current)
                             elseif (pointers['prediction'].current and pointers['pred_type'].current == 'MoveDirection') then 
-                                return root.CFrame + (humanoid.MoveDirection * (pointers['pred_rate'].current + 1.5))
+                                return root.CFrame + (humanoid.MoveDirection * (pointers['pred_rate'].current + 2))
                             else
                                 return root.CFrame
                             end
