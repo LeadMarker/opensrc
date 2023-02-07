@@ -6,6 +6,10 @@ local cars = workspace.Cars
 local random_pos = Vector3.new(math.random(1000, 2000), math.random(1000, 2000), math.random(1000, 2000))
 local current = tick()
 
+for i,v in pairs(getconnections(client.Idled)) do 
+    v:Disable()
+end
+
 local seconds = 300
 
 local part = Instance.new('Part', workspace)
