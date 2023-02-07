@@ -3,7 +3,7 @@ local workspace = game:GetService('Workspace')
 
 local client = players.LocalPlayer
 local cars = workspace.Cars 
-local random_pos = Vector3.new(math.random(1000, 2000), math.random(1000, 2000), math.random(1000, 2000))
+local random_pos = Vector3.new(math.random(0, 10000), math.random(0, 10000), math.random(0, 10000))
 local current = tick()
 
 for i,v in pairs(getconnections(client.Idled)) do 
