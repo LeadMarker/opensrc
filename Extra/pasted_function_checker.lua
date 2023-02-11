@@ -13,8 +13,6 @@ local info_table = { -- Edit your stuff here
 
 getrawmetatable(getfenv()).__newindex = function(self, key, value)
     if (info_table[key]) then 
-        local constants = getconstants(value)
-        local upvalues = getupvalues(value)
         local found = {}
         
         local function check_constants(name, func)
