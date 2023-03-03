@@ -52,7 +52,7 @@ do
         
         for i, v in pairs(self.keys) do 
             table.insert(drawings, draw('Text', {
-                Text = v,
+                Text = v:upper(),
                 Color = Color3.fromRGB(255, 255, 255),
                 Size = drawings[i].Size.x - 20,
                 Center = true,
