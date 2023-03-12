@@ -10,7 +10,7 @@ local flags = library.flags
 local client = players.LocalPlayer
 local mobs = workspace.Mobs
 local quests = client.Data.Quests
-local req = (syn and syn.request) or (http and http.request) or http_request or (fluxus and fluxus.request) or request -- infinite yiel
+local req = (syn and syn.request) or (http and http.request) or (KRNL_LOADED and http_request) or (fluxus and fluxus.request) or request -- infinite yiel
 
 for i,v in pairs(getconnections(client.Idled)) do 
     v:Disable()
