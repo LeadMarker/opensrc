@@ -113,7 +113,7 @@ local main = window:AddFolder('Main') do
                         end
                         
                         root.CFrame = CFrame.new(target:FindFirstChild('HumanoidRootPart').Position + Vector3.new(0, 8, 0), target:FindFirstChild('HumanoidRootPart').Position)
-                        attack()
+                        pcall(attack)
                     end
                 end
             end
