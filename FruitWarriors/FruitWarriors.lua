@@ -4,7 +4,7 @@ local window = library:CreateWindow('LeadMarker#1219')
 local players = game:GetService('Players')
 local workspace = game:GetService('Workspace')
 local replicatedstorage = game:GetService('ReplicatedStorage')
-local http = game:GetService('HttpService')
+local http_service = game:GetService('HttpService')
 
 local flags = library.flags
 local client = players.LocalPlayer
@@ -151,9 +151,9 @@ window:AddButton({text = 'Join Discord', callback = function()
             ['Content-Type'] = 'application/json',
             Origin = 'https://discord.com'
         },
-        Body = http:JSONEncode({
+        Body = http_service:JSONEncode({
             cmd = 'INVITE_BROWSER',
-            nonce = http:GenerateGUID(false),
+            nonce = http_service:GenerateGUID(false),
             args = {code = '8Cj5abGrNv'}
         })
     })
