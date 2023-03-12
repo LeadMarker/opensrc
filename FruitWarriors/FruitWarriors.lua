@@ -60,7 +60,7 @@ local main = window:AddFolder('Main') do
         if (client.Backpack:FindFirstChild(flags.chosen_weapon)) then 
             client.Character.Humanoid:EquipTool(client.Backpack:FindFirstChild(flags.chosen_weapon))
         else
-            if (get_mob()) then 
+            if (get_mob() ~= nil) then 
                 game:GetService("ReplicatedStorage").Remotes.Mouse1Combat:FireServer(flags.chosen_weapon, 4)
                 game:GetService("ReplicatedStorage").Remotes.M1sDamage:FireServer(flags.chosen_weapon, get_mob())
             end
