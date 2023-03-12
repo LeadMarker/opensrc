@@ -16,6 +16,8 @@ for i,v in pairs(getconnections(client.Idled)) do
     v:Disable()
 end
 
+getgenv().isnetworkowner = isnetworkowner or function(part) return part.ReceiveAge == 0 end -- found on githb
+
 local function is_running()
     return library.open
 end
@@ -71,10 +73,22 @@ local main = window:AddFolder('Main') do
         end
     end
 
+    local function get_weapons()
+        local weap = {}
+
+        for i,v in pairs(client.Backpack:GetChildren()) do
+            if (v:IsA('Tool') and v:FindFirstChild('Main') and #v:GetChildren() >= 2) then 
+                table.insert(weap, v.Name)
+            end
+        end
+
+        return weap
+    end
+
     main:AddToggle({text = "Autofarm", flag = "autofarm", state = false})
     main:AddToggle({text = "Farm Nearest", flag = "autofarm_near", state = false})
 
-    main:AddList({text = "Select Weapon", flag = "chosen_weapon", value = "Combat", values = {'Combat', 'Katana'}})
+    main:AddList({text = "Select Weapon", flag = "chosen_weapon", value = get_weapons()[1], values = get_weapons()})
     main:AddList({text = "Select Mob / Quest", flag = "chosen_mob", value = "Bandit (Level 1)", values = quest_table})
 
     main:AddToggle({text = "Chest Farm", flag = "chest_farm", state = false})
