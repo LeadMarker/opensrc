@@ -81,16 +81,19 @@ do
 
             local char = player.Character 
             local root = char and char:FindFirstChild('HumanoidRootPart')
+            local humanoid = char and char:FindFirstChild('Humanoid')
 
             if (char and root) then 
                 position, onscreen = camera:WorldToViewportPoint((root.CFrame * CFrame.new(0, 3, 0)).Position)
                 text.Position = Vector2.new(position.x, position.y) - Vector2.new(0, text.TextBounds.y)
                 text.Color = player.TeamColor.Color
 
+                local h = math.floor(humanoid.Health / humanoid.MaxHealth * 100)
                 table.insert(_text, player.name)
+                table.insert(_text, h .. '%')
             end
 
-            text.Text = table.concat(_text, '')
+            text.Text = table.concat(_text, '\n')
             text.Visible = onscreen
         end
 
