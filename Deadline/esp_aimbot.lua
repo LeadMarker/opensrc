@@ -1,7 +1,7 @@
 local players = game:GetService('Players')
 local runservice = game:GetService('RunService')
 local userinputservice = game:GetService('UserInputService')
-local workspcae = game:GetService('Workspace')
+local workspace = game:GetService('Workspace')
 
 local client = players.LocalPlayer
 local chrs = workspace.characters
