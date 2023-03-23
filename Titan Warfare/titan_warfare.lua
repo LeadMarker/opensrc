@@ -1,5 +1,3 @@
-assert(game.PlaceVersion == 251, 'game might have updated anticheat')
-
 local players = game:GetService('Players')
 local workspace = game:GetService('Workspace')
 local userinputservice = game:GetService('UserInputService')
