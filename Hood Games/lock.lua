@@ -135,7 +135,5 @@ local index; index = hookmetamethod(game, '__index', function(self, key)
         return (target and CFrame.new(get_prediction())) or index(self, key)
     end
    
-    return shared.old(self, key) 
+    return index(self, key) 
 end)
-
-shared.old = shared.old or index
