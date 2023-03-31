@@ -1,9 +1,6 @@
 local userinputservice = game:GetService('UserInputService')
 local players = game:GetService('Players')
 local workspace = game:GetService('Workspace')
-local stats = game:GetService('Stats')
-local set_con = syn_context_set or setthreadcontext
-
 
 local tau = 2 * math.pi
 local camera = workspace.CurrentCamera
@@ -105,10 +102,7 @@ local function anti_detect()
 end
 
 local function get_ping()
-    set_con(7) -- wouldnt work without this
-    local ping = stats.Network.ServerStatsItem["Data Ping"]:GetValue() / 1000
     local new_ping = (anti_detect() and prediction * 16) or prediction
-    set_con(2)
     return new_ping
 end
 
