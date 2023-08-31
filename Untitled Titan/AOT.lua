@@ -11,7 +11,6 @@ local tweenservice = game:GetService('TweenService')
 -- Variables
 local client = players.LocalPlayer 
 local positions = { mission = Vector3.new(1, 1, 235), wave = Vector3.new(234, 1, -1) }
-local exp_type = (identifyexecutor() == 'Krnl' and Krnl) or Fluxus
 
 -- Functions
 local function moveto(Target, TeleportSpeed)
@@ -79,24 +78,4 @@ while (task.wait()) do
 			game:GetService("ReplicatedStorage").DamageEvent:FireServer(nil, humanoid, '&@&*&@&', target)
 		end
 	end
-end
-
-if (exp_type == 'Fluxus') then 
-	Fluxus.queue_on_teleport([[
-		getgenv().settings = {
-			mission_type = settings.mission_type
-			tween_speed = settings.tween_speed
-		}
-
-		loadstring(game:HttpGet('https://raw.githubusercontent.com/LeadMarker/opensrc/main/Untitled%20Titan/AOT.lua'))()
-	]])
-else
-	queue_on_teleport([[
-		getgenv().settings = {
-			mission_type = settings.mission_type
-			tween_speed = settings.tween_speed
-		}
-
-		loadstring(game:HttpGet('https://raw.githubusercontent.com/LeadMarker/opensrc/main/Untitled%20Titan/AOT.lua'))()
-	]])
 end
