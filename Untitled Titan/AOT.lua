@@ -61,6 +61,10 @@ local function get_titan()
 	return titan
 end
 
+for i,v in pairs(getconnections(client.Idled)) do 
+	v:Disable() 
+end
+
 while (task.wait()) do 
 	if (game.PlaceId == 6372960231) then 
 		moveto(CFrame.new(positions[settings.mission_type]), settings.tween_speed)
