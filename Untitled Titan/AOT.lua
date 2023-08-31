@@ -88,7 +88,7 @@ if (exp_type == 'Fluxus') then
 			tween_speed = settings.tween_speed
 		}
 
-		loadstring(game:HttpGet('https://github.com/LeadMarker/opensrc/blob/main/Untitled%20Titan/AOT.lua'))()
+		loadstring(game:HttpGet('https://raw.githubusercontent.com/LeadMarker/opensrc/main/Untitled%20Titan/AOT.lua'))()
 	]])
 else
 	queue_on_teleport([[
@@ -97,6 +97,6 @@ else
 			tween_speed = settings.tween_speed
 		}
 
-		loadstring(game:HttpGet('https://github.com/LeadMarker/opensrc/blob/main/Untitled%20Titan/AOT.lua'))()
+		loadstring(game:HttpGet('https://raw.githubusercontent.com/LeadMarker/opensrc/main/Untitled%20Titan/AOT.lua'))()
 	]])
 end
