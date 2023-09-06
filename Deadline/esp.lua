@@ -1,3 +1,5 @@
+-- this is trash, go look at my other version
+
 -- // Vars \\ -- 
 local client = game:GetService('Players').LocalPlayer
 local characters = game:GetService('Workspace').characters
